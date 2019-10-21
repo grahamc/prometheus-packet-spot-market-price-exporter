@@ -60,7 +60,7 @@ def collect():
 def data():
     with REQUEST_TIME.time():
         data = requests.get(
-            "https://api.packet.net/market/spot/prices",
+            "https://api.packet.net/market/spot/prices?legacy=exclude",
             headers={"Accept": "application/json", "X-Auth-Token": api_token},
         ).json()
     for facility, facility_data in data["spot_market_prices"].items():
