@@ -76,4 +76,4 @@ if __name__ == "__main__":
     start_http_server(9400)
     while True:
         collect()
-        time.sleep(30)
+        time.sleep(60)
