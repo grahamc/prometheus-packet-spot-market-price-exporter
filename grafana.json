@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 15,
-  "iteration": 1571603908224,
+  "iteration": 1573666102886,
   "links": [],
   "panels": [
     {
@@ -64,7 +64,7 @@
           "refId": "A"
         },
         {
-          "expr": "rate(packet_spot_market_price_query_failures[10m]) * 60",
+          "expr": "rate(packet_spot_market_price_query_failures_total[10m]) * 60",
           "legendFormat": "Failed",
           "refId": "B"
         }
@@ -150,7 +150,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Query Time per Scrape",
+      "title": "Duration of GET https://api.packet.net/market/spot/prices?legacy=exclude",
       "tooltip": {
         "show": true,
         "showHistogram": false
@@ -180,7 +180,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -214,8 +214,8 @@
       "scopedVars": {
         "plan": {
           "selected": false,
-          "text": "baremetal_0",
-          "value": "baremetal_0"
+          "text": "c1.large.arm",
+          "value": "c1.large.arm"
         }
       },
       "seriesOverrides": [],
@@ -277,7 +277,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -308,13 +308,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
           "selected": false,
-          "text": "baremetal_1",
-          "value": "baremetal_1"
+          "text": "c1.large.arm.xda",
+          "value": "c1.large.arm.xda"
         }
       },
       "seriesOverrides": [],
@@ -376,7 +376,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -407,13 +407,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
           "selected": false,
-          "text": "baremetal_1e",
-          "value": "baremetal_1e"
+          "text": "c1.small.x86",
+          "value": "c1.small.x86"
         }
       },
       "seriesOverrides": [],
@@ -475,7 +475,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -506,13 +506,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
           "selected": false,
-          "text": "baremetal_2",
-          "value": "baremetal_2"
+          "text": "c1.xlarge.x86",
+          "value": "c1.xlarge.x86"
         }
       },
       "seriesOverrides": [],
@@ -574,7 +574,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -605,403 +605,7 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "plan": {
-          "selected": false,
-          "text": "baremetal_2a",
-          "value": "baremetal_2a"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
-          "legendFormat": "{{facility}} ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$plan - Price by facility",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "currencyUSD",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 16,
-        "y": 20
-      },
-      "id": 23,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "plan": {
-          "selected": false,
-          "text": "baremetal_2a2",
-          "value": "baremetal_2a2"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
-          "legendFormat": "{{facility}} ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$plan - Price by facility",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "currencyUSD",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 0,
-        "y": 32
-      },
-      "id": 24,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "plan": {
-          "selected": false,
-          "text": "baremetal_3",
-          "value": "baremetal_3"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
-          "legendFormat": "{{facility}} ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$plan - Price by facility",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "currencyUSD",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 8,
-        "y": 32
-      },
-      "id": 25,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "plan": {
-          "selected": false,
-          "text": "baremetal_s",
-          "value": "baremetal_s"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
-          "legendFormat": "{{facility}} ",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$plan - Price by facility",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "currencyUSD",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 16,
-        "y": 32
-      },
-      "id": 26,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
@@ -1069,15 +673,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 8,
-        "x": 0,
-        "y": 44
+        "x": 16,
+        "y": 20
       },
-      "id": 27,
+      "id": 23,
       "legend": {
         "avg": false,
         "current": false,
@@ -1100,7 +704,7 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
@@ -1168,15 +772,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 8,
-        "x": 8,
-        "y": 44
+        "x": 0,
+        "y": 32
       },
-      "id": 28,
+      "id": 24,
       "legend": {
         "avg": false,
         "current": false,
@@ -1199,7 +803,7 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
@@ -1267,15 +871,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 8,
-        "x": 16,
-        "y": 44
+        "x": 8,
+        "y": 32
       },
-      "id": 29,
+      "id": 25,
       "legend": {
         "avg": false,
         "current": false,
@@ -1298,7 +902,106 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "plan": {
+          "selected": false,
+          "text": "m1.xlarge.x86",
+          "value": "m1.xlarge.x86"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
+          "legendFormat": "{{facility}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$plan - Price by facility",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 2,
+          "format": "currencyUSD",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 16,
+        "y": 32
+      },
+      "id": 26,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
@@ -1366,7 +1069,304 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 44
+      },
+      "id": 27,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1573666102886,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "plan": {
+          "selected": false,
+          "text": "s1.large.x86",
+          "value": "s1.large.x86"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
+          "legendFormat": "{{facility}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$plan - Price by facility",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 2,
+          "format": "currencyUSD",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 8,
+        "y": 44
+      },
+      "id": 28,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1573666102886,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "plan": {
+          "selected": false,
+          "text": "t1.small.x86",
+          "value": "t1.small.x86"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
+          "legendFormat": "{{facility}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$plan - Price by facility",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 2,
+          "format": "currencyUSD",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 16,
+        "y": 44
+      },
+      "id": 29,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1573666102886,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "plan": {
+          "selected": false,
+          "text": "x1.small.x86",
+          "value": "x1.small.x86"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "packet_spot_market_price{plan=~\"^($plan)$\"}",
+          "legendFormat": "{{facility}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$plan - Price by facility",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 2,
+          "format": "currencyUSD",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
@@ -1397,7 +1397,7 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1571603908224,
+      "repeatIteration": 1573666102886,
       "repeatPanelId": 2,
       "scopedVars": {
         "plan": {
@@ -1460,7 +1460,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "10s",
   "schemaVersion": 20,
   "style": "dark",
   "tags": [],
@@ -1469,7 +1469,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -1497,7 +1496,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -1517,5 +1516,5 @@
   "timezone": "",
   "title": "Packet Spot Prices",
   "uid": "ItOJVUoWk",
-  "version": 3
+  "version": 6
 }
