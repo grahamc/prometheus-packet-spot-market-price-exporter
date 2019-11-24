@@ -7,15 +7,15 @@ import sys
 import time
 
 
-FAILED_QUERIES = Counter(
+FAILED_SPOT_QUERIES = Counter(
     "packet_spot_market_price_query_failures",
     "Total number of failures to fetch spot market prices",
 )
-SUCCESSFUL_SCRAPES = Counter(
+SUCCESSFUL_SPOT_SCRAPES = Counter(
     "packet_spot_market_price_scrapes_total",
     "Total number of spot market price scrapes",
 )
-REQUEST_TIME = Histogram(
+SPOT_REQUEST_TIME = Histogram(
     "packet_spot_market_price_query_duration",
     "Time spent requesting spot market prices",
     buckets=(
@@ -49,16 +49,15 @@ PRICE = Gauge(
 
 def collect():
     try:
-        for rec in data():
+        for rec in spot_data():
             PRICE.labels(plan=rec["plan"], facility=rec["facility"]).set(rec["price"])
-        SUCCESSFUL_SCRAPES.inc()
+        SUCCESSFUL_SPOT_SCRAPES.inc()
     except Exception as e:
         pprint(e)
-        FAILED_QUERIES.inc()
+        FAILED_SPOT_QUERIES.inc()
 
-
-def data():
-    with REQUEST_TIME.time():
+def spot_data():
+    with SPOT_REQUEST_TIME.time():
         data = requests.get(
             "https://api.packet.net/market/spot/prices?legacy=exclude",
             headers={"Accept": "application/json", "X-Auth-Token": api_token},
