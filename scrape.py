@@ -1,11 +1,29 @@
 from prometheus_client.utils import INF
-from prometheus_client import Counter, Histogram, Gauge, start_http_server
+from prometheus_client import Counter, Histogram, Gauge, Enum, start_http_server
 from pprint import pprint
 import requests
 import json
 import sys
 import time
 
+FAILED_CAPACITY_QUERIES = Counter(
+    "packet_capacity_query_failures",
+    "Total number of failures to fetch spot market prices",
+)
+SUCCESSFUL_CAPACITY_SCRAPES = Counter(
+    "packet_capacity_scrapes_total",
+    "Total number of capacity scrapes",
+)
+CAPACITY_REQUEST_TIME = Histogram(
+    "packet_capacity_query_duration",
+    "Time spent requesting capacity data",
+)
+CAPACITY = Enum(
+    "packet_capacity",
+    "Current plan capacity by facility.",
+    ["plan", "facility"],
+    states=["unavailable", "limited", "normal"],
+)
 
 FAILED_SPOT_QUERIES = Counter(
     "packet_spot_market_price_query_failures",
@@ -49,6 +67,14 @@ PRICE = Gauge(
 
 def collect():
     try:
+        for rec in capacity_data():
+            CAPACITY.labels(plan=rec["plan"], facility=rec["facility"]).state(rec['capacity'])
+            SUCCESSFUL_CAPACITY_SCRAPES.inc()
+    except Exception as e:
+        pprint(e)
+        FAILED_CAPACITY_QUERIES.inc()
+
+    try:
         for rec in spot_data():
             PRICE.labels(plan=rec["plan"], facility=rec["facility"]).set(rec["price"])
         SUCCESSFUL_SPOT_SCRAPES.inc()
@@ -65,6 +91,16 @@ def spot_data():
     for facility, facility_data in data["spot_market_prices"].items():
         for plan, price_data in facility_data.items():
             yield {"facility": facility, "plan": plan, "price": price_data["price"]}
+
+def capacity_data():
+    with CAPACITY_REQUEST_TIME.time():
+        data = requests.get(
+            "https://api.packet.net/capacity?legacy=include",
+            headers={"Accept": "application/json", "X-Auth-Token": api_token},
+        ).json()
+    for facility, facility_data in data["capacity"].items():
+        for plan, capacity_data in facility_data.items():
+            yield {"facility": facility, "plan": plan, "capacity": capacity_data["level"]}
 
 
 if __name__ == "__main__":
